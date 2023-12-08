@@ -1,6 +1,6 @@
 EXEC = Simulation
 
-CC = c++
+CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 RM = rm -rf
 
@@ -10,8 +10,8 @@ SRC_DIR = src
 OBJ_DIR = obj
 # LIB_DIR = lib_directory
 
-SRC = $(shell find $(SRC_DIR) -type f -name "*.cpp")
-OBJ = $(patsubst $(SRC_DIR)/%.cpp, $(OBJ_DIR)/%.o, $(SRC))
+SRC = $(shell find $(SRC_DIR) -type f -name "*.c")
+OBJ = $(patsubst $(SRC_DIR)/%.c, $(OBJ_DIR)/%.o, $(SRC))
 
 # LIB = $(LIB_DIR)/your_lib.a
 # LIBS = -L$(LIB_DIR) -lLib -lLib -lLib -lLib (if you have multiple libs)
@@ -23,7 +23,7 @@ $(EXEC): $(OBJ) $(LIB)
 	@mkdir -p $(BIN_DIR)
 	@mv $(EXEC) $(BIN_DIR)/$(EXEC)
 
-$(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 	@mkdir -p $(dir $@)
 	@$(CC) $(CFLAGS) -I $(INC_DIR) -c $< -o $@
 

@@ -10,5 +10,5 @@ plt.xlabel('Simulation Step')
 plt.ylabel('Population')
 plt.title('Population over Time')
 plt.legend()
-plt.show()
+plt.show(block=True)
 
